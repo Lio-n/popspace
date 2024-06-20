@@ -1,3 +1,59 @@
+## 🚀 Getting Started
+
+### 🟠 Pre-requirements
+
+- An Audio/Video media provider:
+  - A deployed [LiveKit server](https://livekit.io/)
+  - A LiveKit Cloud account (The variables needed to use LiveKit are already defined in 🔵 Installation -> 3. Set envs....)
+  - Or, a Twilio account
+
+### 🔵 Installation
+
+1. Clone repository:
+
+   ```sh
+   git clone git@github.com:Lio-n/popspace.git
+   cd popspace
+   ```
+
+2. Install NPM packages, in the root directory execute:
+
+   ```sh
+   yarn install
+   ```
+
+3. Fix : Failed to compile. ../unicorn/component/index.js Module not found: Can't resolve './dist/collaborative_quill.js':
+   - In the _unicorn/components/_, create an empty folder called **dist/**.
+4. Set envs: For every Workspaces, _hermes, noodle, noodle-api, noodle-shared and unicorn_, inside of each one create a file **.env**, and copy the variables declared at **/.env.example**.
+
+5. Makes a build for every Workspaces. In the root directory, execute.
+
+   ```sh
+   yarn precontainerize
+   ```
+
+6. (OPTIONAL) Generate Mock info from **noodle-shared** Workspace. In the root directory, execute:
+
+   ```sh
+   yarn db-init
+   ```
+
+7. Run the proyect, in the root directory execute:
+
+   ```sh
+   yarn dev
+   ```
+
+   - The frontend is server at _http://localhost:8888/create_.
+
+---
+
+---
+
+---
+
+---
+
 # PopSpace, virtual spaces for everybody.
 
 PopSpace is the open source virtual canvas platform for chatting, collaborating, and playing.
@@ -8,7 +64,6 @@ Learn more at [PopSpace](https://popspace.io)
 
 ![Hero Shot](README_COVER.png)
 
-
 # Quick Start
 
 To install PopSpace you will need:
@@ -17,6 +72,7 @@ To install PopSpace you will need:
   - A deployed [LiveKit server](https://livekit.io/)
   - A LiveKit Cloud account
   - Or, a Twilio account
+
 ---
 
 ## Using the Docker Image (Recommended)
@@ -56,10 +112,10 @@ You can put these in a `.env` file and run `docker run -env-file .env ...` to in
 
 The Docker image will need the following ports exposed to run the various services:
 
-  * 8888: the UI server
-  * 8889: the API server
-  * 8890: the socket server
-  * 8891: the collaborative document server
+- 8888: the UI server
+- 8889: the API server
+- 8890: the socket server
+- 8891: the collaborative document server
 
 The UI connects to each of these services on the corresponding port for the host it is being served from. For example, if you're running the container on localhost, the UI will try to connect to `localhost:8889` for the API. If you host the container elsewhere on `https://popspace.myserver.com`, it will try to connect to `https://popspace.myserver.com:8889` for the API.
 
@@ -170,7 +226,6 @@ The only privilege admins have currently is to create and modify room templates.
 You can set your own actor up as an admin after connecting to the app. After you connect the first time, your actor connection info is cached in your browser, so the actor you use should remain stable until you clear cache or change browsers.
 
 You can determine your actor ID by opening the console while the app is open and printing `client.actor.actorId`. To become an admin, access your database and flip the `admin` column to `true` for your actor. There's no other way to do that currently if you don't have direct database access.
-
 
 ## TLS support
 
